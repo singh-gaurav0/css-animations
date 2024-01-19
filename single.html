@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Bar</title>
+</head>
+<style>
+    .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50vh;
+    border-style: solid;
+    border-width: 10px;
+}
+
+.box {
+    width: 100%; 
+    height: 100%; 
+    background-color: #04071e; 
+    position: relative;
+    overflow: hidden;
+    background-image: repeating-linear-gradient(-45deg, rgba(255,255,255, 0.25), rgba(255,255,255, 0.25) 1px, transparent 1px, transparent 6px);
+    background-size: 4px 4px;
+}
+
+.box .fill {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; 
+    opacity: 0.9;
+}
+#button
+{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 50px;
+}
+#startButton{
+    color: white;
+    background-color:#038450 ;
+    padding: 10px 24px;
+    border: none;
+    background-image: repeating-linear-gradient(-45deg, rgba(255,255,255, 0.25), rgba(255,255,255, 0.25) 1px, transparent 1px, transparent 6px);
+    background-size: 4px 4px;
+}
+#stopButton{
+    color: white;
+    background-color:#e30b0c ;
+    padding: 10px 24px;
+    border: none;
+    background-image: repeating-linear-gradient(-45deg, rgba(255,255,255, 0.25), rgba(255,255,255, 0.25) 1px, transparent 1px, transparent 6px);
+    background-size: 4px 4px;
+
+}
+#resetButton{
+    color: white;
+    background-color:#794fc2 ;
+    padding: 10px 24px;
+    border: none;
+    background-image: repeating-linear-gradient(-45deg, rgba(255,255,255, 0.25), rgba(255,255,255, 0.25) 1px, transparent 1px, transparent 6px);
+    background-size: 4px 4px;
+    
+}
+@keyframes fillUp {
+    0% { height: 100%; }
+    25%{ height: 55%;}
+    50% { height: 20%; } 
+    100% { height: 0%; }
+    75% { height: 35%;}
+    
+}
+
+</style>
+<body>
+    <div class="container">
+        <div class="box" data-color= #7349bd></div>
+        <div class="box" data-color= #e257b3></div>
+        <div class="box" data-color= #ff6a92></div>
+        <div class="box" data-color= #f4946f></div>
+        <div class="box" data-color= #f9c750></div>
+    </div>
+   <div id="button">
+    <button id="startButton">Start</button>
+    <button id="resetButton">Reset</button>
+    <button id="stopButton">Stop</button>
+    
+   </div>
+    <script >const boxes = document.querySelectorAll(".box");
+        const startButton = document.getElementById("startButton");
+        const stopButton = document.getElementById("stopButton");
+        const resetButton = document.getElementById("resetButton");
+        
+        boxes.forEach((box) => {
+            const fill = document.createElement("div");
+            fill.classList.add("fill");
+            box.appendChild(fill);
+        
+            fill.style.backgroundColor = box.dataset.color;
+        
+            fill.style.animation = `fillUp 3s ease-in-out infinite alternate`;
+            fill.style.animationPlayState = "paused"; 
+        
+            fill.style.animationDelay = Math.random() * 3 + "s";
+        });
+        
+        startButton.addEventListener("click", function() {
+            boxes.forEach((box) => {
+                box.querySelector(".fill").style.animationPlayState = "running";
+            });
+            
+        });
+        stopButton.addEventListener("click", function() {
+            boxes.forEach((box) => {
+                box.querySelector(".fill").style.animationPlayState = "paused";
+            });
+        });
+        resetButton.addEventListener("click", function() {
+            boxes.forEach((box) => {
+                box.querySelector(".fill").style.height = "100%"; 
+                box.querySelector(".fill").style.animationPlayState = "paused"; 
+            });
+        });
+        </script>
+</body>
+</html>

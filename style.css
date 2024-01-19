@@ -1,0 +1,64 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50vh;
+    border-style: solid;
+    border-width: 10px;
+}
+
+.box {
+    width: 100%; /* Adjust as needed */
+    height: 100%; /* Adjust as needed */
+    background-color: #04071e; /* Initial color */
+    position: relative;
+    overflow: hidden;
+    background-image: repeating-linear-gradient(-45deg, rgba(255,255,255, 0.25), rgba(255,255,255, 0.25) 1px, transparent 1px, transparent 6px);
+    background-size: 4px 4px;
+}
+
+.box .fill {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* Important change! */
+    opacity: 0.9;
+}
+#button
+{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 50px;
+}
+#startButton{
+    color: white;
+    background-color:#038450 ;
+    padding: 10px 24px;
+    border: none;
+    background-image: repeating-linear-gradient(-45deg, rgba(255,255,255, 0.25), rgba(255,255,255, 0.25) 1px, transparent 1px, transparent 6px);
+    background-size: 4px 4px;
+}
+#stopButton{
+    color: white;
+    background-color:#e30b0c ;
+    padding: 10px 24px;
+    border: none;
+    background-image: repeating-linear-gradient(-45deg, rgba(255,255,255, 0.25), rgba(255,255,255, 0.25) 1px, transparent 1px, transparent 6px);
+    background-size: 4px 4px;
+
+}
+#resetButton{
+    color: white;
+    background-color:#794fc2 ;
+    padding: 10px 24px;
+    border: none;
+    background-image: repeating-linear-gradient(-45deg, rgba(255,255,255, 0.25), rgba(255,255,255, 0.25) 1px, transparent 1px, transparent 6px);
+    background-size: 4px 4px;
+    
+}
+@keyframes fillUp {
+    0% { height: 100%; }
+    50% { height: 20%; } /* Adjust height range for bars */
+    100% { height: 100%; }
+}
